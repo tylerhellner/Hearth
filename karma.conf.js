@@ -11,7 +11,7 @@ module.exports = function (config) {
         'webpack', 'sourcemap'
       ]
     },
-    reporters: ['dots'],
+    reporters: ['mocha'],
     webpack: {
       devtool: 'inline-source-map',
       resolve: {
