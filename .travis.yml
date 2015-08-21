@@ -1,10 +1,7 @@
 language: node_js
 node_js:
-  - "stable"
   - "0.12"
-  - "0.11"
-  - "iojs"
-  - "iojs-v2.5.0"
-before_install:
-  - "exportDISPLAY=:99.0"
-  - "sh-e/etc/init.d/xvfbstart"
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+sudo: false
