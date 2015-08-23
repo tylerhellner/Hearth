@@ -7,7 +7,7 @@ var TARGET = process.env.TARGET;
 var ROOT_PATH = path.resolve(__dirname);
 
 var common = {
-  entry: path.resolve(ROOT_PATH, 'app/main'),
+  entry: path.resolve(ROOT_PATH, 'src/App'),
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
@@ -38,7 +38,7 @@ if(TARGET === 'dev' || !TARGET) {
         {
           test: /\.jsx?$/,
           loaders: ['react-hot', 'babel?stage=1'],
-          include: path.resolve(__dirname, 'app')
+          include: path.resolve(__dirname, 'src')
         }
       ]
     },

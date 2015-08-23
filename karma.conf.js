@@ -21,7 +21,12 @@ module.exports = function (config) {
         loaders: [
           {
             test: /\.jsx?$/,
-            loader: 'babel-loader'}
+            loader: 'babel-loader'
+          },
+          {
+            test: /\.styl$/,
+            loader: 'style!css!stylus'
+          }
         ]
       }
     },

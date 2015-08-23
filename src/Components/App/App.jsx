@@ -1,5 +1,6 @@
+import './App.styl';
 import React, {Component} from 'react';
-import Hello from './Hello';
+import Hello from '../Hello/Hello';
 
 export default class App extends Component {
   render() {

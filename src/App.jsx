@@ -1,8 +1,5 @@
-import 'normalize-css';
-import './stylesheets/main.styl'
-
 import React from 'react';
-import App from './components/App';
+import App from './Components/App/App';
 
 function main() {
   var app = document.createElement('div');

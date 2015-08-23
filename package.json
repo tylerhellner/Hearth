@@ -7,7 +7,8 @@
   "scripts": {
     "start": "TARGET=dev webpack-dev-server",
     "build": "TARGET=production webpack",
-    "test": "karma start"
+    "onetest": "karma start",
+    "test": "karma start --single-run=false"
   },
   "repository": {
     "type": "git",
