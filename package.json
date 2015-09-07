@@ -1,7 +1,7 @@
 {
   "name": "hearth",
   "version": "0.0.1",
-  "description": "Le Petit Secret website",
+  "description": "Hearth - Zen Writing",
   "main": "app/main.jsx",
   "readme": "README.md",
   "scripts": {
@@ -29,6 +29,7 @@
     "node-uuid": "^1.4.3",
     "normalize-css": "^2.3.1",
     "react": "^0.13.3",
+    "react-router": "^0.13.3",
     "redux": "^1.0.1"
   },
   "devDependencies": {

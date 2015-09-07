@@ -11,8 +11,10 @@ module.exports = function (config) {
         'webpack', 'sourcemap'
       ]
     },
+    browserNoActivityTimeout: 100000,
     reporters: ['mocha'],
     webpack: {
+      cache: true,
       devtool: 'inline-source-map',
       resolve: {
         extensions: ['', '.js', '.jsx']
@@ -21,7 +23,7 @@ module.exports = function (config) {
         loaders: [
           {
             test: /\.jsx?$/,
-            loader: 'babel-loader'
+            loader: 'babel'
           },
           {
             test: /\.styl$/,
