@@ -8,7 +8,8 @@
     "start": "TARGET=dev webpack-dev-server",
     "build": "TARGET=production webpack",
     "onetest": "karma start",
-    "test": "karma start --single-run=false"
+    "test": "karma start --single-run=false",
+    "production": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "node": "0.12.7"
   },
   "dependencies": {
+    "express": "^4.13.3",
     "node-uuid": "^1.4.3",
     "normalize-css": "^2.3.1",
     "react": "^0.13.3",

@@ -25,7 +25,7 @@ var common = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Le Petit Secret',
+      title: 'Hearth - Zen Writing',
       template: 'src/index.html',
       inject: 'body'
     })
@@ -55,4 +55,18 @@ if(TARGET === 'dev' || !TARGET) {
       new webpack.HotModuleReplacementPlugin()
     ]
   });
+}
+
+if(TARGET === 'production') {
+  module.exports = merge(common, {
+    module: {
+      loaders: [
+        {
+          test: /\.jsx?$/,
+          loaders: ['react-hot', 'babel?stage=1'],
+          include: path.resolve(__dirname, 'src')
+        }
+      ]
+    },
+  })
 }
