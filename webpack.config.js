@@ -7,7 +7,7 @@ var TARGET = process.env.TARGET;
 var ROOT_PATH = path.resolve(__dirname);
 
 var common = {
-  entry: path.resolve(ROOT_PATH, 'src/App'),
+  entry: path.resolve(ROOT_PATH, 'src/Main.jsx'),
   resolve: {
     extensions: ['', '.js', '.jsx', 'styl']
   },
@@ -25,7 +25,9 @@ var common = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Le Petit Secret'
+      title: 'Le Petit Secret',
+      template: 'src/index.html',
+      inject: 'body'
     })
   ]
 };
