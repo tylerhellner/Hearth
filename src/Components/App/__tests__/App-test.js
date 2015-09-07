@@ -5,7 +5,7 @@ var App = require('../App.jsx');
 
 describe('App', function() {
   it('renders without problems', function() {
-    var root = TestUtils.renderIntoDocument(<App/>);
-    expect(root).toExist();
+    var componentInQuestion = TestUtils.renderIntoDocument(<App/>);
+    expect(componentInQuestion).toExist();
   });
 });

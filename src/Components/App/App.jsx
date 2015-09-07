@@ -1,12 +1,12 @@
 import './App.styl';
 import React, {Component} from 'react';
-import Hello from '../Hello/Hello';
+import Input from '../Input/Input';
 
 export default class App extends Component {
   render() {
     return (
       <div>
-        <Hello />
+        <Input />
       </div>
       );
   }
