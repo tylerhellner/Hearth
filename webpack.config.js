@@ -2,6 +2,8 @@ var webpack = require('webpack');
 var merge = require('webpack-merge');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var autoprefixer = require('autoprefixer');
+var lost = require('lost');
 
 var TARGET = process.env.TARGET;
 var ROOT_PATH = path.resolve(__dirname);
@@ -19,9 +21,12 @@ var common = {
     loaders: [
       {
         test: /\.styl$/,
-        loaders: ['style', 'css', 'stylus']
+        loaders: ['style', 'css', 'postcss', 'stylus']
       }
     ]
+  },
+  postcss: function() {
+    return [autoprefixer({browsers: ['last 2 versions']}), lost]
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -63,7 +68,7 @@ if(TARGET === 'production') {
       loaders: [
         {
           test: /\.jsx?$/,
-          loaders: ['react-hot', 'babel?stage=1'],
+          loaders: ['babel?stage=1'],
           include: path.resolve(__dirname, 'src')
         }
       ]
