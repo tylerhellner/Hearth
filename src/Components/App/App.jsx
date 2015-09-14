@@ -5,9 +5,7 @@ import Input from '../Input/Input';
 export default class App extends Component {
   render() {
     return (
-      <div>
         <Input />
-      </div>
       );
   }
 }
