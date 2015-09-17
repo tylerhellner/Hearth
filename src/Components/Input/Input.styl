@@ -2,11 +2,15 @@
 
 .input_text_entry
   background: colors.green
-  border: 1px solid colors.grey_dark
+  border none
+  border-bottom: 2px solid colors.blue_dark
   color: colors.white
   font-weight 500
   // fix so !important tag is not needed
   font-size 36pt !important
+  padding 0
+  //padding-left calc(0.4375em / 2) !important
+  text-align center
   width 100%
 
   &:focus
