@@ -24,9 +24,7 @@ const history = createBrowserHistory();
 //   );
 
 ReactDOM.render(
-  <div>
     <Router history={history}>
       <Route component={App} path="/" />
-    </Router>
-  </div>, document.getElementById('root')
+    </Router>, document.getElementById('root')
   );
