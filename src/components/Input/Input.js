@@ -37,13 +37,10 @@ export default class Input extends React.Component {
 
   render() {
     return (
-      <div style={{height: '100%'}}>
-        <textarea
-                  className='input_text_entry'
+        <textarea className='input_text_entry'
                   onKeyUp={this.getTextWidth}
                   ref='textarea'
                   />
-      </div>
       )
   }
 };
