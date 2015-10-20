@@ -1,7 +1,7 @@
-import React from 'react/addons';
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 import expect from 'expect';
 import Input from '../Input';
-const TestUtils = React.addons.TestUtils;
 
 describe('Input', function() {
   it('renders without problems', function() {
@@ -9,11 +9,11 @@ describe('Input', function() {
     expect(componentInQuestion).toExist();
   });
 
-  it('contains an input field', function() {
+  it('contains a textarea', function() {
     const componentInQuestion = TestUtils.renderIntoDocument(<Input/>);
     let expectedTag = TestUtils.findRenderedDOMComponentWithTag(
-      componentInQuestion, 'input');
-    expect(expectedTag.props.type).toBe('text');
+      componentInQuestion, 'textarea');
+    expect(expectedTag.className).toBe('input_text_entry');
   });
 
 

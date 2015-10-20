@@ -1,7 +1,7 @@
-var React = require('react/addons');
-var TestUtils = React.addons.TestUtils;
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 var expect = require('expect');
-var App = require('../App.jsx');
+var App = require('../App');
 
 describe('App', function() {
   it('renders without problems', function() {

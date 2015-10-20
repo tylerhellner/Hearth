@@ -1,5 +1,5 @@
 import './Input.styl';
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 // To support legacy browsers, use invisible div solution.
 // stackoverflow.com/questions/118241/calculate-text-width-with-javascript/
@@ -18,7 +18,7 @@ export default class Input extends React.Component {
     var context = canvas.getContext('2d');
     context.font = '500 36pt "Helvetica Neue"';
 
-    var inputWidth = React.findDOMNode(this).offsetWidth;
+    var inputWidth = this.refs.textarea.offsetWidth;
 
     var oldState = 5;
 
@@ -39,7 +39,8 @@ export default class Input extends React.Component {
     return (
       <div>
         <textarea className='input_text_entry'
-                  onKeyUp={this.getTextWidth}/>
+                  onKeyUp={this.getTextWidth}
+                  ref='textarea'/>
       </div>
       )
   }
