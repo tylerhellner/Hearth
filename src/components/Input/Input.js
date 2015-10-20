@@ -8,8 +8,17 @@ export default class Input extends React.Component {
   constructor(props) {
     super(props);
 
+    window.addEventListener('resize', this.handleResize.bind(this));
+    this.state = {windowHeight: window.innerHeight};
+
     this.canvas = document.createElement('canvas');
     this.getTextWidth = this.getTextWidth.bind(this);
+  }
+
+  handleResize(e) {
+    const elHeight = this.refs.textarea.offsetHeight;
+    let computedHeight = ((window.innerHeight - elHeight) / 2);
+    this.setState({windowHeight: computedHeight});
   }
 
   getTextWidth(e) {
@@ -38,9 +47,11 @@ export default class Input extends React.Component {
   render() {
     return (
       <div>
-        <textarea className='input_text_entry'
+        <textarea
+                  className='input_text_entry'
                   onKeyUp={this.getTextWidth}
-                  ref='textarea'/>
+                  ref='textarea'
+                  style={{marginTop: String(this.state.windowHeight) + 'px'}}/>
       </div>
       )
   }
