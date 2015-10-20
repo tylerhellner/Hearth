@@ -12,7 +12,7 @@ describe('Input', function() {
   it('contains a textarea', function() {
     const componentInQuestion = TestUtils.renderIntoDocument(<Input/>);
     let expectedTag = TestUtils.findRenderedDOMComponentWithTag(
-      componentInQuestion, 'textarea');
+      componentInQuestion, 'input');
     expect(expectedTag.className).toBe('input_text_entry');
   });
 

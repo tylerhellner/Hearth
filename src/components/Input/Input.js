@@ -18,10 +18,14 @@ export default class Input extends React.Component {
     var context = canvas.getContext('2d');
     context.font = '500 36pt "Helvetica Neue"';
 
-    var inputWidth = this.refs.textarea.offsetWidth;
+    // for performance, store emWidth and inputMargin in state at startup and
+    // update inputMargin onResize (debounced). Store emWidth if the font is
+    // changed. Now getTextWidth won't have to calculate this value every time
+    // a key is pressed.
+    const emWidth = context.measureText('M').width;
+    const inputMargin = this.refs.input.offsetWidth - emWidth;
 
     var oldState = 5;
-
 
     if (e.keyCode === 32) {
       console.log(oldState);
@@ -29,18 +33,41 @@ export default class Input extends React.Component {
       //return metrics.width;
     }
 
+    if (e.keyCode === 13) {
+      this.splitText(inputMargin, metrics.width)
+    }
+
     var metrics = context.measureText(text);
-    console.log('Text Width: ' + metrics.width + ',',
-                'Input Width: ' + inputWidth);
+    // console.log('Text Width: ' + metrics.width + ',',
+    //             'Input Width: ' + inputMargin,
+    //             'Em Width: ' + emWidth);
+
+    if (metrics.width > inputMargin) {
+      this.splitText(inputMargin, metrics.width, text);
+    }
     return metrics.width;
+  }
+
+  splitText(inputWidth, textWidth, text) {
+    const cleanText = text.split(' ');
+    const remainder = cleanText.pop();
+
+    const paragraphNode = this.refs.overflowArea;
+    const paragraphText = paragraphNode.innerHTML;
+
+    paragraphNode.innerHTML = paragraphText + ' ' + cleanText.join(' ');
+    this.refs.input.value = remainder;
   }
 
   render() {
     return (
-        <textarea className='input_text_entry'
+      <div style={{height: '100%'}}>
+        <p ref='overflowArea'></p>
+        <input className='input_text_entry'
                   onKeyUp={this.getTextWidth}
-                  ref='textarea'
+                  ref='input'
                   />
+      </div>
       )
   }
 };
