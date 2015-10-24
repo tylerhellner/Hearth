@@ -30,39 +30,35 @@ export default class Input extends React.Component {
     if (e.keyCode === 32) {
       console.log(oldState);
       return
-      //return metrics.width;
-    }
-
-    if (e.keyCode === 13) {
-      this.splitText(inputMargin, metrics.width)
     }
 
     var metrics = context.measureText(text);
-    // console.log('Text Width: ' + metrics.width + ',',
-    //             'Input Width: ' + inputMargin,
-    //             'Em Width: ' + emWidth);
+
+    if (e.keyCode === 13) {
+      this.props.dispatchCarriageReturn(text.trim());
+      this.refs.input.value = '';
+    }
 
     if (metrics.width > inputMargin) {
-      this.splitText(inputMargin, metrics.width, text);
-    }
-    return metrics.width;
+      this.splitText(text)
+    };
+
+    return;
   }
 
-  splitText(inputWidth, textWidth, text) {
+  splitText(text) {
     const cleanText = text.split(' ');
     const remainder = cleanText.pop();
-
-    const paragraphNode = this.refs.overflowArea;
-    const paragraphText = paragraphNode.innerHTML;
-
-    paragraphNode.innerHTML = paragraphText + ' ' + cleanText.join(' ');
+    console.log(cleanText, remainder);
+    this.props.dispatchCarriageReturn(cleanText.join(' '));
     this.refs.input.value = remainder;
   }
 
   render() {
     return (
       <div style={{height: '100%'}}>
-        <p ref='overflowArea'></p>
+        <p ref='overflowArea'
+           style={{width: '560px', marginLeft: 'auto', marginRight: 'auto'}}>{this.props.text}</p>
         <input className='input_text_entry'
                   onKeyUp={this.getTextWidth}
                   ref='input'

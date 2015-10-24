@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { blocks } from './hearth-reducers';
+import { text } from './hearth-reducers';
 
 const rootReducer = combineReducers({
-  blocks
+  text
 });
 
 export default rootReducer;

@@ -17,3 +17,12 @@ export function splitBlock(text) {
     }
   };
 }
+
+export function carriageReturn(text) {
+  return {
+    type: constants.CARRIAGE_RETURN,
+    payload: {
+      text: text
+    }
+  }
+}
