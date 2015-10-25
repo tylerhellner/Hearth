@@ -1,3 +1,5 @@
+'use strict';
+
 var path = require('path');
 var webpack = require('webpack');
 
@@ -7,41 +9,41 @@ module.exports = {
   devtool: 'eval',
   entry: [
     'webpack-hot-middleware/client',
-    './src/index'
+    './src/index',
   ],
   resolve: {
-    extensions: ['', '.js', '.jsx', '.styl', '.css']
+    extensions: ['', '.js', '.jsx', '.styl', '.css'],
   },
   output: {
     path: path.join(ROOT_PATH, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/static/',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
   ],
   module: {
     loaders: [
       {
         test: /\.js$/,
         loaders: ['babel'],
-        include: path.join(ROOT_PATH, 'src')
+        include: path.join(ROOT_PATH, 'src'),
       },
       {
         test: /\.styl$/,
         loaders: ['style', 'css', 'postcss', 'stylus'],
-        include: path.join(ROOT_PATH, 'src')
+        include: path.join(ROOT_PATH, 'src'),
       },
       {
         test: /\.css$/,
         loaders: ['style', 'css', 'postcss'],
         include: [
           path.resolve(ROOT_PATH, 'src'),
-          path.resolve(ROOT_PATH, 'node_modules/normalize.css')
-        ]
-      }
-    ]
+          path.resolve(ROOT_PATH, 'node_modules/normalize.css'),
+        ],
+      },
+    ],
   },
   postcss: function () {
     return [
@@ -50,8 +52,8 @@ module.exports = {
       require('postcss-simple-vars')({
         variables: function () {
           return require(path.resolve(ROOT_PATH, 'lib/cssVariables.js'));
-        }
-      })
+        },
+      }),
     ];
-  }
+  },
 };
