@@ -1,8 +1,10 @@
+'use strict';
+
 import { combineReducers } from 'redux';
 import { text } from './hearth-reducers';
 
 const rootReducer = combineReducers({
-  text
+  text,
 });
 
 export default rootReducer;

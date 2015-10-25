@@ -1,3 +1,4 @@
+'use strict';
 import 'babel-core/polyfill';
 
 import React from 'react';
@@ -20,7 +21,7 @@ ReactDOM.render(
         <Route component={App} path="/" />
       </Router>
     </Provider>
-    <DebugPanel bottom right top>
+    <DebugPanel bottom={true} right={true} top={true}>
       <DevTools monitor={LogMonitor}
                 store={store}
                 visibleOnLoad={true}

@@ -1,3 +1,6 @@
+'use strict';
+/* global describe it */
+
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import expect from 'expect';

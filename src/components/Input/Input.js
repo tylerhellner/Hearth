@@ -1,3 +1,5 @@
+'use strict';
+
 import './Input.styl';
 import React, { PropTypes } from 'react';
 
@@ -25,10 +27,11 @@ export default class Input extends React.Component {
     const emWidth = context.measureText('M').width;
     const inputMargin = this.refs.input.offsetWidth - emWidth;
 
-    var oldState = 5;
+    // var oldState = 5;
 
     if (e.keyCode === 32) {
-      console.log(oldState);
+      // TODO handle space bar presses in a more elegant fashion
+      // console.log(oldState);
       return
     }
 
@@ -41,7 +44,7 @@ export default class Input extends React.Component {
 
     if (metrics.width > inputMargin) {
       this.splitText(text)
-    };
+    }
 
     return;
   }
@@ -49,7 +52,7 @@ export default class Input extends React.Component {
   splitText(text) {
     const cleanText = text.split(' ');
     const remainder = cleanText.pop();
-    console.log(cleanText, remainder);
+    // console.log(cleanText, remainder);
     this.props.dispatchCarriageReturn(cleanText.join(' '));
     this.refs.input.value = remainder;
   }
@@ -57,13 +60,19 @@ export default class Input extends React.Component {
   render() {
     return (
       <div style={{height: '100%'}}>
-        <p ref='overflowArea'
-           style={{width: '560px', marginLeft: 'auto', marginRight: 'auto'}}>{this.props.text}</p>
-        <input className='input_text_entry'
+        <p ref="overflowArea"
+           style={{width: '560px', marginLeft: 'auto', marginRight: 'auto'}}>
+           {this.props.text}
+        </p>
+        <input className="input_text_entry"
                   onKeyUp={this.getTextWidth}
-                  ref='input'
+                  ref="input"
                   />
       </div>
       )
   }
+}
+
+Input.PropTypes = {
+  text: PropTypes.string.isRequired,
 };

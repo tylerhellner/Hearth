@@ -1,3 +1,5 @@
+'use strict';
+
 import './App.styl';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
@@ -10,20 +12,20 @@ class App extends Component {
     return (
         <Input
             text={text}
-            dispatchCarriageReturn={(text) => dispatch(carriageReturn(text))}/>
+            dispatchCarriageReturn={(txt) => dispatch(carriageReturn(txt))}/>
       );
   }
 }
 
 function stateToProps (state) {
   return {
-    text: state.text
+    text: state.text,
   }
 }
 
 App.PropTypes = {
   dispatch: PropTypes.func.isRequired,
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
 }
 
 export default connect(stateToProps)(App);
